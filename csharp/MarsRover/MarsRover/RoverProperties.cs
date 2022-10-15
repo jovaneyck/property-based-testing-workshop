@@ -6,6 +6,8 @@ namespace MarsRover;
 
 /// <summary>
 /// This is where you can describe new properties for the Rover.
+///
+/// Link to FsCheck documentation: https://fscheck.github.io/FsCheck/
 /// </summary>
 public class RoverProperties
 {
