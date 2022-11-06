@@ -112,4 +112,29 @@ describe("Rover properties", () => {
         expect(equal(r, executeCommands(r, [Command.F, Command.B]))).toBeTruthy();
         expect(equal(r, executeCommands(r, [Command.B, Command.F]))).toBeTruthy();
       })));
+
+  let turnArb = fc.constantFrom(Command.L, Command.R)
+
+  it("Turning never changes location", () =>
+    fc.assert(
+      fc.property(roverArb, turnArb, (r, t) => {
+        let turned = executeCommands(r, [t])
+        expect(turned.location).toStrictEqual(r.location)
+      })));
+
+  it("4 identical turns is a 360", () =>
+    fc.assert(
+      fc.property(roverArb, turnArb, (r, t) => {
+        let turned = executeCommands(r, [t, t, t, t])
+        expect(turned).toStrictEqual(r)
+      })));
+
+  let fwdbckArb = fc.constantFrom(Command.F, Command.B)
+
+  it("Forward back never changes direction", () =>
+    fc.assert(
+      fc.property(roverArb, fwdbckArb, (r, fb) => {
+        let turned = executeCommands(r, [fb])
+        expect(turned.direction).toStrictEqual(r.direction)
+      })));
 });
