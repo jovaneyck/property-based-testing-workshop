@@ -69,5 +69,7 @@ export function executeCommands(r: Rover, c: Command[]): Rover {
 }
 
 export function equal(r1: Rover, r2: Rover) {
-  return r1.direction === r2.direction && r1.location === r2.location;
+  return r1.direction === r2.direction
+    && r1.location[0] === r2.location[0]
+    && r1.location[1] === r2.location[1];
 }

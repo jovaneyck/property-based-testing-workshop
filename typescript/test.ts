@@ -61,6 +61,7 @@ describe("Example properties for string.contains", () => {
 
 describe("Rover properties", () => {
   let commandArb = fc.constantFrom(Command.L, Command.R, Command.F, Command.B);
+  let commandsArb = fc.array(commandArb);
   let directionArb = fc.constantFrom(
     Direction.N,
     Direction.E,
@@ -87,7 +88,28 @@ describe("Rover properties", () => {
     fc.assert(
       fc.property(roverArb, commandArb, (r, c) => {
         const actual = executeCommand(r, c);
-        return equal(actual, r); //TODO FIXME
+        return !equal(actual, r);
       })
     ));
+
+  it("Handles any sequence of commands without blowing up", () =>
+    fc.assert(
+      fc.property(roverArb, commandsArb, (r, cs) => {
+        executeCommands(r, cs) //run-time errors also result in failed properties
+      })
+    ));
+
+  it("Turns are inverse", () =>
+    fc.assert(
+      fc.property(roverArb, (r) => {
+        expect(equal(r, executeCommands(r, [Command.L, Command.R]))).toBeTruthy();
+        expect(equal(r, executeCommands(r, [Command.R, Command.L]))).toBeTruthy();
+      })));
+
+  it("Forward back are inverse", () =>
+    fc.assert(
+      fc.property(roverArb, (r) => {
+        expect(equal(r, executeCommands(r, [Command.F, Command.B]))).toBeTruthy();
+        expect(equal(r, executeCommands(r, [Command.B, Command.F]))).toBeTruthy();
+      })));
 });
