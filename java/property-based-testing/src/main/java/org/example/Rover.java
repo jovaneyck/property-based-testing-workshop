@@ -53,6 +53,17 @@ public class Rover {
         return this;
     }
 
+    public Rover moveBackward() {
+        switch (direction) {
+            case NORTH -> this.location = location.stepToSouth();
+            case EAST -> this.location = location.stepToWest();
+            case SOUTH -> this.location = location.stepToNorth();
+            case WEST -> this.location = location.stepToEast();
+        }
+        return this;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

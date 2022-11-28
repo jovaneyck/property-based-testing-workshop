@@ -128,4 +128,88 @@ class RoverTest {
 
         assertThat(rover.getLocation()).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @EnumSource(Direction.class)
+    void moveBackward_doesNotChangeDirection(final Direction direction) {
+        final Rover rover = roverBuilder()
+                .withStartingDirection(direction)
+                .build();
+
+        rover.moveBackward();
+
+        assertThat(rover.getDirection()).isEqualTo(direction);
+    }
+
+    @Test
+    void moveBackward_whenFacingNorth_onlyChangesX() {
+        final int xStart = 0;
+        final int yStart = 0;
+
+        final Location startLocation = new Location(xStart, yStart);
+        final Location expected = new Location(xStart - 1, yStart);
+
+        final Rover rover = roverBuilder()
+                .withStartingDirection(Direction.NORTH)
+                .withStartingLocation(startLocation)
+                .build();
+
+        rover.moveBackward();
+
+        assertThat(rover.getLocation()).isEqualTo(expected);
+    }
+
+    @Test
+    void moveBackward_whenFacingEast_onlyChangesY() {
+        final int xStart = 0;
+        final int yStart = 0;
+
+        final Location startLocation = new Location(xStart, yStart);
+        final Location expected = new Location(xStart, yStart - 1);
+
+        final Rover rover = roverBuilder()
+                .withStartingDirection(Direction.EAST)
+                .withStartingLocation(startLocation)
+                .build();
+
+        rover.moveBackward();
+
+        assertThat(rover.getLocation()).isEqualTo(expected);
+    }
+
+    @Test
+    void moveBackward_whenFacingSouth_onlyChangesX() {
+        final int xStart = 0;
+        final int yStart = 0;
+
+        final Location startLocation = new Location(xStart, yStart);
+        final Location expected = new Location(xStart + 1, yStart);
+
+        final Rover rover = roverBuilder()
+                .withStartingDirection(Direction.SOUTH)
+                .withStartingLocation(startLocation)
+                .build();
+
+        rover.moveBackward();
+
+        assertThat(rover.getLocation()).isEqualTo(expected);
+    }
+
+    @Test
+    void moveBackward_whenFacingWest_onlyChangesY() {
+        final int xStart = 0;
+        final int yStart = 0;
+
+        final Location startLocation = new Location(xStart, yStart);
+        final Location expected = new Location(xStart, yStart + 1);
+
+        final Rover rover = roverBuilder()
+                .withStartingDirection(Direction.WEST)
+                .withStartingLocation(startLocation)
+                .build();
+
+        rover.moveBackward();
+
+        assertThat(rover.getLocation()).isEqualTo(expected);
+    }
 }
