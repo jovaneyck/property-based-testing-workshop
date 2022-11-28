@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Rover {
     private Location location;
     private Direction direction;
@@ -15,5 +17,22 @@ public class Rover {
 
     public Direction getDirection() {
         return direction;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Rover rover = (Rover) o;
+
+        return (Objects.equals(location, rover.getLocation())) &&
+                (Objects.equals(direction, rover.getDirection()));
+    }
+
+    @Override
+    public int hashCode() {
+        int result = location != null ? location.hashCode() : 0;
+        result = 31 * result + (direction != null ? direction.hashCode() : 0);
+        return result;
     }
 }
