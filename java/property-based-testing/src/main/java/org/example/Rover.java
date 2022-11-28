@@ -63,6 +63,16 @@ public class Rover {
         return this;
     }
 
+    public Rover turnLeft() {
+        switch (direction) {
+            case NORTH -> this.direction = Direction.WEST;
+            case EAST -> this.direction = Direction.NORTH;
+            case SOUTH -> this.direction = Direction.EAST;
+            case WEST -> this.direction = Direction.SOUTH;
+        }
+        return this;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -80,5 +90,13 @@ public class Rover {
         int result = location != null ? location.hashCode() : 0;
         result = 31 * result + (direction != null ? direction.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Rover{" +
+                "location=" + location +
+                ", direction=" + direction +
+                '}';
     }
 }

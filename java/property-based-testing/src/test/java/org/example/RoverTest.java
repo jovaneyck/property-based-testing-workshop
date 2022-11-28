@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -211,5 +212,36 @@ class RoverTest {
         rover.moveBackward();
 
         assertThat(rover.getLocation()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @EnumSource(Direction.class)
+    void turnLeft_doesNotChangeLocation(final Direction direction) {
+        final Location startLocation = new Location(0, 0);
+        final Rover rover = roverBuilder()
+                .withStartingDirection(direction)
+                .withStartingLocation(startLocation)
+                .build();
+
+        rover.turnLeft();
+
+        assertThat(rover.getLocation()).isEqualTo(startLocation);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "NORTH, WEST",
+            "WEST, SOUTH",
+            "SOUTH, EAST",
+            "EAST, NORTH"
+    })
+    void turnLeft_turnsCounterClockwise(final Direction inputDirection, final Direction expectedDirection) {
+        final Rover rover = roverBuilder()
+                .withStartingDirection(inputDirection)
+                .build();
+
+        rover.turnLeft();
+
+        assertThat(rover.getDirection()).isEqualTo(expectedDirection);
     }
 }
