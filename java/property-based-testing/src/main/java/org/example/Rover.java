@@ -73,6 +73,16 @@ public class Rover {
         return this;
     }
 
+    public Rover turnRight() {
+        switch (direction) {
+            case NORTH -> this.direction = Direction.EAST;
+            case EAST -> this.direction = Direction.SOUTH;
+            case SOUTH -> this.direction = Direction.WEST;
+            case WEST -> this.direction = Direction.NORTH;
+        }
+        return this;
+    }
+
 
     @Override
     public boolean equals(Object o) {

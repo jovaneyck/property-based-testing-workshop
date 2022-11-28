@@ -244,4 +244,35 @@ class RoverTest {
 
         assertThat(rover.getDirection()).isEqualTo(expectedDirection);
     }
+
+    @ParameterizedTest
+    @EnumSource(Direction.class)
+    void turnRight_doesNotChangeLocation(final Direction direction) {
+        final Location startLocation = new Location(0, 0);
+        final Rover rover = roverBuilder()
+                .withStartingDirection(direction)
+                .withStartingLocation(startLocation)
+                .build();
+
+        rover.turnRight();
+
+        assertThat(rover.getLocation()).isEqualTo(startLocation);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "NORTH, EAST",
+            "WEST, NORTH",
+            "SOUTH, WEST",
+            "EAST, SOUTH"
+    })
+    void turnRight_turnsCounterClockwise(final Direction inputDirection, final Direction expectedDirection) {
+        final Rover rover = roverBuilder()
+                .withStartingDirection(inputDirection)
+                .build();
+
+        rover.turnRight();
+
+        assertThat(rover.getDirection()).isEqualTo(expectedDirection);
+    }
 }
