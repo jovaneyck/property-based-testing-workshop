@@ -17,6 +17,23 @@ public class Location {
         return y;
     }
 
+
+    public Location stepToNorth() {
+        return new Location(x + 1, y);
+    }
+
+    public Location stepToSouth() {
+        return new Location(x - 1, y);
+    }
+
+    public Location stepToEast() {
+        return new Location(x, y + 1);
+    }
+
+    public Location stepToWest() {
+        return new Location(x, y - 1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
