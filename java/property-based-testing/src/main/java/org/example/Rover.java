@@ -6,9 +6,32 @@ public class Rover {
     private Location location;
     private Direction direction;
 
-    public Rover() {
-        this.location = new Location(0, 0);
-        this.direction = Direction.NORTH;
+    private Rover(Builder builder) {
+        this.location = builder.location;
+        this.direction = builder.direction;
+    }
+
+    public static Builder roverBuilder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private Location location = new Location(0, 0);
+        private Direction direction = Direction.NORTH;
+
+        public Builder withStartingLocation(Location location) {
+            this.location = location;
+            return this;
+        }
+
+        public Builder withStartingDirection(Direction direction) {
+            this.direction = direction;
+            return this;
+        }
+
+        public Rover build() {
+            return new Rover(this);
+        }
     }
 
     public Location getLocation() {
