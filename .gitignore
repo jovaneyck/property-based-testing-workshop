@@ -352,3 +352,22 @@ MigrationBackup/
 #typescript
 node_modules
 coverage
+
+#clojure and intellij
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+*.iml
+.idea
+/lib/
+/classes/
+/target/
+/checkouts/
+.lein-deps-sum
+.lein-repl-history
+.lein-plugins/
+.lein-failures
+.nrepl-port
+.cpcache/
+/out
