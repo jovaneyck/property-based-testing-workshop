@@ -1,6 +1,13 @@
-(ns rover)
+(ns rover
+  (:require [clojure.test.check :as tc]
+            [clojure.test.check.generators :as gen]
+            [clojure.test.check.properties :as prop]))
 
 (def initial {:direction :N :location [0 0]})
+
+(def directions #{:N :S :E :W})
+(def commands #{:F :B :L :R})
+
 
 (defn move-forward [{direction :direction [x y] :location}]
   (let [new-location (condp = direction
@@ -53,3 +60,15 @@
   (= (execute-commands initial (list :F :B :L :L :L :L)) initial)
 
   ,,,)
+
+;; Let the testing commence!
+(comment
+  ;; use this to generate samples for easy viewing!
+  (gen/sample (gen/elements commands))
+  ,,,)
+
+(def any-command-changes-the-rover
+  (prop/for-all [r (gen/elements commands)]
+    (not= initial (execute-commands initial [r]))))
+
+(tc/quick-check 100 any-command-changes-the-rover)
