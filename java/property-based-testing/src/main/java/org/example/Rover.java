@@ -42,8 +42,18 @@ public class Rover {
         return direction;
     }
 
+    public Rover processCommand(Command command) {
+        switch (command) {
+            case MOVE_FORWARD -> this.moveForward();
+            case MOVE_BACKWARD -> this.moveBackward();
+            case TURN_LEFT -> this.turnLeft();
+            case TURN_RIGHT -> this.turnRight();
+        }
+        return this;
+    }
 
-    public Rover moveForward() {
+
+    private Rover moveForward() {
         switch (direction) {
             case NORTH -> this.location = location.stepToNorth();
             case EAST -> this.location = location.stepToEast();
@@ -53,7 +63,7 @@ public class Rover {
         return this;
     }
 
-    public Rover moveBackward() {
+    private Rover moveBackward() {
         switch (direction) {
             case NORTH -> this.location = location.stepToSouth();
             case EAST -> this.location = location.stepToWest();
@@ -63,7 +73,7 @@ public class Rover {
         return this;
     }
 
-    public Rover turnLeft() {
+    private Rover turnLeft() {
         switch (direction) {
             case NORTH -> this.direction = Direction.WEST;
             case EAST -> this.direction = Direction.NORTH;
@@ -73,7 +83,7 @@ public class Rover {
         return this;
     }
 
-    public Rover turnRight() {
+    private Rover turnRight() {
         switch (direction) {
             case NORTH -> this.direction = Direction.EAST;
             case EAST -> this.direction = Direction.SOUTH;

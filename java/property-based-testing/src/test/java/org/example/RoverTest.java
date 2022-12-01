@@ -53,7 +53,7 @@ class RoverTest {
                 .withStartingDirection(direction)
                 .build();
 
-        rover.moveForward();
+        rover.processCommand(Command.MOVE_FORWARD);
 
         assertThat(rover.getDirection()).isEqualTo(direction);
     }
@@ -71,7 +71,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.moveForward();
+        rover.processCommand(Command.MOVE_FORWARD);
 
         assertThat(rover.getLocation()).isEqualTo(expected);
     }
@@ -89,7 +89,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.moveForward();
+        rover.processCommand(Command.MOVE_FORWARD);
 
         assertThat(rover.getLocation()).isEqualTo(expected);
     }
@@ -107,7 +107,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.moveForward();
+        rover.processCommand(Command.MOVE_FORWARD);
 
         assertThat(rover.getLocation()).isEqualTo(expected);
     }
@@ -125,7 +125,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.moveForward();
+        rover.processCommand(Command.MOVE_FORWARD);
 
         assertThat(rover.getLocation()).isEqualTo(expected);
     }
@@ -137,7 +137,7 @@ class RoverTest {
                 .withStartingDirection(direction)
                 .build();
 
-        rover.moveBackward();
+        rover.processCommand(Command.MOVE_BACKWARD);
 
         assertThat(rover.getDirection()).isEqualTo(direction);
     }
@@ -155,7 +155,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.moveBackward();
+        rover.processCommand(Command.MOVE_BACKWARD);
 
         assertThat(rover.getLocation()).isEqualTo(expected);
     }
@@ -173,7 +173,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.moveBackward();
+        rover.processCommand(Command.MOVE_BACKWARD);
 
         assertThat(rover.getLocation()).isEqualTo(expected);
     }
@@ -191,7 +191,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.moveBackward();
+        rover.processCommand(Command.MOVE_BACKWARD);
 
         assertThat(rover.getLocation()).isEqualTo(expected);
     }
@@ -209,7 +209,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.moveBackward();
+        rover.processCommand(Command.MOVE_BACKWARD);
 
         assertThat(rover.getLocation()).isEqualTo(expected);
     }
@@ -223,7 +223,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.turnLeft();
+        rover.processCommand(Command.TURN_LEFT);
 
         assertThat(rover.getLocation()).isEqualTo(startLocation);
     }
@@ -240,7 +240,7 @@ class RoverTest {
                 .withStartingDirection(inputDirection)
                 .build();
 
-        rover.turnLeft();
+        rover.processCommand(Command.TURN_LEFT);
 
         assertThat(rover.getDirection()).isEqualTo(expectedDirection);
     }
@@ -254,7 +254,7 @@ class RoverTest {
                 .withStartingLocation(startLocation)
                 .build();
 
-        rover.turnRight();
+        rover.processCommand(Command.TURN_RIGHT);
 
         assertThat(rover.getLocation()).isEqualTo(startLocation);
     }
@@ -271,7 +271,7 @@ class RoverTest {
                 .withStartingDirection(inputDirection)
                 .build();
 
-        rover.turnRight();
+        rover.processCommand(Command.TURN_RIGHT);
 
         assertThat(rover.getDirection()).isEqualTo(expectedDirection);
     }
