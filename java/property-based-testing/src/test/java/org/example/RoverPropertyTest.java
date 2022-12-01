@@ -17,4 +17,15 @@ public class RoverPropertyTest {
 
         assertThat(rover).isNotEqualTo(roverBuilder().build());
     }
+
+    @Property
+    void anyTwoCommand_roverAlwaysChanged(@ForAll Command command1, @ForAll Command command2) {
+        final Rover rover = roverBuilder().build();
+
+        rover.processCommand(command1)
+                .processCommand(command2);
+
+        //TODO: FIXME
+        assertThat(rover).isNotEqualTo(roverBuilder().build());
+    }
 }
