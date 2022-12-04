@@ -352,3 +352,6 @@ MigrationBackup/
 #typescript
 node_modules
 coverage
+
+#Intellij files
+.idea
