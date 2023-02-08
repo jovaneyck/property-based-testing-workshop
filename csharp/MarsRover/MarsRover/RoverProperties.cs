@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using FsCheck;
 using FsCheck.Xunit;
+using Xunit;
 
 namespace MarsRover;
 
@@ -27,5 +28,11 @@ public class RoverProperties
     [Property]
     public Property example_property_predicate(Rover r) => //You can also have your Property methods return a property
         (r == null).ToProperty(); //ToProperty wraps any true/false predicate into a property
+
+    [Fact]
+    public void example_property_fact()
+    {
+        Prop.ForAll(Arb.From<int[]>(), xs => xs.Reverse().SequenceEqual(xs)).QuickCheckThrowOnFailure();
+    }
 
 }
