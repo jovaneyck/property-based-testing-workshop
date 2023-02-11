@@ -8,7 +8,7 @@ enum State
 }
 //Generators
 Gen.Constant(1).Sample(100, 3)
-Arb.From<State>().Sample(3, 3)
+Arb.From<State>().Generator.Sample(3, 3)
 Gen.ListOf(Arb.From<State>().Generator).Sample(3,3)
 Arb.Generate<int>().Sample(3,3)
 var nonFinalStates = Gen.OneOf(Gen.Constant(State.Draft), Gen.Constant(State.Proposed));
