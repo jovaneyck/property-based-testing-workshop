@@ -35,4 +35,10 @@ public class RoverProperties
         Prop.ForAll(Arb.From<int[]>(), xs => xs.Reverse().SequenceEqual(xs)).QuickCheckThrowOnFailure();
     }
 
+    //1.You can throw anything at it
+    //2.Different paths, same destination
+    //3.There and back again
+    //4.Some things never change
+    //5.The more things change...
+
 }
