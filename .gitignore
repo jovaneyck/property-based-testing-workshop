@@ -371,6 +371,11 @@ pom.xml.asc
 .nrepl-port
 .cpcache/
 /out
+/build
 =======
-#Intellij files
-.idea
+
+#Gradle
+.gradle/
+
+#jqwik files
+.jqwik-database
