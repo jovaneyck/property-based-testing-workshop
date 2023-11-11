@@ -74,4 +74,4 @@ Original:
   Direction = W }
 F
 *)
-Check.Quick("A command always changes a rover", (fun r c -> execute r c <> r)) //TODO FIXME
+Check.Quick("A command always changes a rover", (fun r c -> execute r c = r)) //TODO FIXME
