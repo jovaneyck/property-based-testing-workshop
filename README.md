@@ -1,5 +1,8 @@
 # property-based-testing-workshop
-Starting code for the "introduction to property based testing" workshop
+Starting code for the "introduction to property based testing" workshop.
+Feel free to adapt the slideware/exercises to suit your own workshop needs!
+
+Accompanying slides can be found [here](https://github.com/jovaneyck/property-based-testing-workshop/blob/main/hands-on-property-based-testing.pdf).
 
 ## Why properties?
 
