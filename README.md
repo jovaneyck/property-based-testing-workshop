@@ -10,7 +10,7 @@ We all know unit tests. As these are great at catching regressions, they can onl
 
 On the other end of the verification spectrum we have formal proofs. These can prove certain things about your code, but are typically very expensive to write.
 
-Properties fall somewhere in between. They're a bit more "heavyweight" than classical unit tests but can catch edge cases you didn't think off, without needing a phd in mathematics to do formal proofs.
+Properties fall somewhere in between. They're a bit more "heavyweight" than classical unit tests but can catch edge cases you didn't think of, without needing a phd in mathematics to do formal proofs.
 
 ## What are properties?
 
