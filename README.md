@@ -55,7 +55,7 @@ Some operations are *idempotent*. Sorting a list once, twice or three times shou
 ## Workshop outline
 
 You are given some working code and a test harness that supports writing property based tests.
-Your job is to write new properties for the existing code using the following heursitics:
+Your job is to write new properties for the existing code using the provided heursitics. Or come up with some of your own, PBT is fun like that!
 
 ## kata description
 You can find the original mars rover kata description [here](https://kata-log.rocks/mars-rover-kata).
